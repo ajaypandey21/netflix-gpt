@@ -1,7 +1,15 @@
-# getting started
+# NetflixGPT
 
 - Created react app
 - Configured tailwind
+- Header
+- Routing
+- Login form
+- Sign up form
+- validating form
+- useRef hooks
+- implemented Login / sign up with API
+- Implemented Redux Store with userSlice
 
 # features
 

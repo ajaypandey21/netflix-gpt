@@ -2,12 +2,14 @@ import React from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './login'
 import Browse from './Browse'
+import ErrorPage from './404'
 
 const Body = () => {
 const appRouter = createBrowserRouter([
     {
         path:"/",
-        element:<Login />
+        element:<Login />,
+        errorElement:<ErrorPage/>
 
     },
     {
