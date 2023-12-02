@@ -2,13 +2,19 @@ import React, { useRef, useState } from 'react'
 import Header from './header'
 import { validate } from './utils/Validate'
 import { auth } from './utils/firebase'
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { addUser } from './utils/userSlice'
 
 const Login = () => {
 
     const [isloggedin,setloggedin] = useState(true)
     const [showpass,setShowPass] = useState(false)
     const [error,seterror] = useState(null)
+    const navigate = useNavigate()
+    const dispatch =useDispatch()
+    
 
     const name = useRef(null)
     const email = useRef(null)
@@ -25,7 +31,21 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          console.log(user)
+          updateProfile(user, {
+            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/83236203?v=4"
+          }).then(() => {
+            // Profile updated!
+            console.log(user)
+            const {uid,email,displayName,photoURL}=auth.currentUser
+             dispatch(addUser({ uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
+            navigate("/browse")
+            
+          }).catch((error) => {
+            seterror(error.message)
+            // ...
+          });
+         
+
           // ...
         })
         .catch((error) => {
@@ -35,6 +55,7 @@ const Login = () => {
           // ..
         });
             }
+            
             else{
               //Sign in logic
               signInWithEmailAndPassword(auth,email.current.value,pass.current.value)
@@ -42,6 +63,7 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user) 
+                navigate("/browse")
                 // ...
               })
               .catch((error) => {

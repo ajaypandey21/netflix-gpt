@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from './header'
 
 const Browse = () => {
   return (
-    <div>Browse</div>
+    <div>
+    <Header/>
+    </div>
+
   )
 }
 
