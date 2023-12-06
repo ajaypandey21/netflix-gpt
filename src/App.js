@@ -7,8 +7,9 @@ function App() {
   return (
 
     <Provider store={appStore} >
+      
       <Body />
-
+      
     </Provider>
    
   );
