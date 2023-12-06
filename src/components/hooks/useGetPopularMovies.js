@@ -17,6 +17,7 @@ const useGetPopularMovies = () => {
     };
     useEffect(() => {
       getMoviesData();
+       // eslint-disable-next-line
     }, []);
   
 }

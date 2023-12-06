@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addTopRatedVideos, addUpcoming } from "../utils/movieSlice";
+import { addTopRatedVideos } from "../utils/movieSlice";
 import { API_OPTION } from "../utils/constant";
 import { useEffect } from "react";
 
@@ -16,6 +16,7 @@ const useTopRatedMovies = () => {
   };
   useEffect(() => {
     getMoviesData();
+     // eslint-disable-next-line
   }, []);
 };
 export default useTopRatedMovies;

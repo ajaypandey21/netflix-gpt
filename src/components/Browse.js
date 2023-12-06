@@ -23,16 +23,4 @@ const Browse = () => {
 
 export default Browse;
 
-{
-  /**
-   *  -Movie Container
-   *    - movie bg
-   *    - movie title
-   *
-   *   - second container
-   *    - n rows
-   *     - n cards in each rows
-   *
-   *
-   */
-}
+

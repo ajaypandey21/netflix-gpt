@@ -17,6 +17,7 @@ const useNowPlayingMovie = () => {
     };
     useEffect(() => {
       getMoviesData();
+       // eslint-disable-next-line
     }, []);
   
 }

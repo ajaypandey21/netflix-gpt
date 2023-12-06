@@ -17,6 +17,7 @@ const useGetMovieVideo = (movieid) => {
   };
   useEffect(() => {
     getMovieVideo();
+    // eslint-disable-next-line
   }, []);
 };
 
