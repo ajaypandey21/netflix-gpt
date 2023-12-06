@@ -43,7 +43,7 @@ const Login = () => {
           })
             .then(() => {
               // Profile updated!
-              console.log(user);
+              
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
@@ -74,7 +74,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+        
          ;
           // ...
         })
