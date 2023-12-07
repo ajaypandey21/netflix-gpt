@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 import { addUser } from "./utils/userSlice";
 import { logo } from "./utils/constant";
 
-
 const Login = () => {
   const [isloggedin, setloggedin] = useState(true);
   const [showpass, setShowPass] = useState(false);
@@ -32,18 +31,19 @@ const Login = () => {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        pass.current.value        
+        pass.current.value
       )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/83236203?v=4",
+            photoURL:
+              "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
           })
             .then(() => {
               // Profile updated!
-              
+
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
@@ -53,7 +53,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              ;
             })
             .catch((error) => {
               seterror(error.message);
@@ -74,8 +73,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           // const user = userCredential.user;
-        
-         ;
           // ...
         })
         .catch((error) => {
@@ -93,11 +90,7 @@ const Login = () => {
     <div className="w-full max-h-screen  flex flex-col items-center">
       <Header />
       <div className="absolute h-full w-full overflow-hidden">
-        <img
-          alt="bg"
-          className="h-full w-full object-cover"
-          src={logo }
-        />
+        <img alt="bg" className="h-full w-full object-cover" src={logo} />
       </div>
 
       <div className="xl:h-[500px] absolute flex flex-col text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-[0.8] sm:px-8 sm:py-8 px-16 py-16 rounded-md">

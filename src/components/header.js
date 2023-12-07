@@ -4,11 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "./utils/userSlice";
+import { toggleGptSearch } from "./utils/GptSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  
   const navigate = useNavigate();
+  const togglegpt = () =>{
+    dispatch(toggleGptSearch())
+  }
+  
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -20,7 +26,7 @@ const Header = () => {
       });
   };
   useEffect(() => {
-    const unsubscribe=onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(
@@ -30,16 +36,16 @@ const Header = () => {
             displayName: displayName,
             photoURL: photoURL,
           })
-        )
+        );
         navigate("/browse");
       } else {
         // User is signed out
         // eslint-disable-next-line
-        dispatch(removeUser())
+        dispatch(removeUser());
         navigate("/");
       }
-    })
-    return()=> unsubscribe();
+    });
+    return () => unsubscribe();
     // eslint-disable-next-line
   }, []);
   return (
@@ -51,11 +57,13 @@ const Header = () => {
       />
       {user && (
         <div className="flex p-4">
+          <button onClick={togglegpt} className=" bg-red-700 mx-4 px-2 rounded-xl py-2 my-1">GPTSearch</button>
           <img
             alt="signout"
-            className=" object-contain rounded-full w-12 h-14"
+            className=" object-contain  w-12 h-12"
             src={user?.photoURL}
           ></img>
+          
           <div className="flex flex-col">
             <p>{user.displayName}</p>
             <button onClick={handleSignOut}>(Signout)</button>
