@@ -5,16 +5,22 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "./utils/userSlice";
 import { toggleGptSearch } from "./utils/GptSlice";
+import { language_const, netflix_logo } from "./utils/constant";
+import { changeLanguage } from "./utils/ConfigSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  
+  const isgpt = useSelector((store) => store.gpt.gptSearchToggle);
+
   const navigate = useNavigate();
-  const togglegpt = () =>{
-    dispatch(toggleGptSearch())
-  }
-  
+  const togglegpt = () => {
+    dispatch(toggleGptSearch());
+  };
+  const handleLanguage = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -50,20 +56,38 @@ const Header = () => {
   }, []);
   return (
     <div className=" absolute z-10 bg-gradient-to-b from-black h-20 w-screen flex justify-between text-white font-bold">
-      <img
-        className=" h-20 w-[14rem] "
-        alt="logo"
-        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-      />
+      <a href={"/browse"}>
+        <img className="h-20 w-[14rem]" alt="logo" src={netflix_logo} />
+      </a>
       {user && (
         <div className="flex p-4">
-          <button onClick={togglegpt} className=" bg-red-700 mx-4 px-2 rounded-xl py-2 my-1">GPTSearch</button>
+          {isgpt ? (
+            <>
+              <select
+                onChange={handleLanguage}
+                className=" mt-1 outline-none bg-gray-900"
+              >
+                {language_const.map((lang) => (
+                  <option key={lang.identifier}>{lang.name}</option>
+                ))}
+              </select>
+            </>
+          ) : (
+            ""
+          )}
+
+          <button
+            onClick={togglegpt}
+            className=" bg-red-700 mx-4 px-2 rounded-xl py-2 my-1"
+          >
+            GPTSearch
+          </button>
           <img
             alt="signout"
             className=" object-contain  w-12 h-12"
             src={user?.photoURL}
           ></img>
-          
+
           <div className="flex flex-col">
             <p>{user.displayName}</p>
             <button onClick={handleSignOut}>(Signout)</button>
