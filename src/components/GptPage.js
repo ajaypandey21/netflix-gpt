@@ -6,7 +6,7 @@ import { logo } from "./utils/constant";
 const GptPage = () => {
   return (
     <div>
-      <img className="fixed -z-20" alt="logo" src={logo} />
+      <img className="fixed h-screen w-screen object-cover -z-20" alt="logo" src={logo} />
       <GptSearchBar />
       <GptMoviesSuggestions />
     </div>

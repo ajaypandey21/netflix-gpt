@@ -55,12 +55,16 @@ const Header = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className=" absolute z-10 bg-gradient-to-b from-black h-20 w-screen flex justify-between text-white font-bold">
+    <div className=" absolute z-10 bg-gradient-to-b from-black h-20 w-screen flex flex-col md:flex-row justify-between text-white font-bold">
       <a href={"/browse"}>
-        <img className="h-20 w-[14rem]" alt="logo" src={netflix_logo} />
+        <img
+          className="h-20 w-[14rem] mx-auto md:mx-0"
+          alt="logo"
+          src={netflix_logo}
+        />
       </a>
       {user && (
-        <div className="flex p-4">
+        <div className="flex justify-between  bg-black p-2 md:p-4">
           {isgpt ? (
             <>
               <select
@@ -84,7 +88,7 @@ const Header = () => {
           </button>
           <img
             alt="signout"
-            className=" object-contain  w-12 h-12"
+            className=" object-contain hidden md:block  w-12 h-12"
             src={user?.photoURL}
           ></img>
 

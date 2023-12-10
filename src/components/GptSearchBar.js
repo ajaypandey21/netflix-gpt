@@ -30,7 +30,6 @@ const GptSearchBar = () => {
       messages: [{ role: "user", content: query }],
       model: "gpt-3.5-turbo",
     });
-    // console.log(chatCompletion.choices);
 
     if (!chatCompletion.choices[0]) return;
     const gptMovies = chatCompletion.choices[0].message.content.split(",");
@@ -41,14 +40,14 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className=" w-full pt-[7%] flex justify-center ">
+    <div className=" w-full pt-[45%] md:pt-[7%] flex justify-center ">
       <form
-        className="w-1/2 grid grid-cols-12"
+        className="w-full md:w-1/2 grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
-          className="py-3 outline-none px-2 text-white m-4 col-span-9 bg-black rounded-xl"
+          className="py-3 outline-none px-2 text-white m-2 md:m-4 col-span-9 bg-black rounded-xl"
           type="text"
           placeholder={language.wwylth[langconfi]}
         />

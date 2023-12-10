@@ -6,7 +6,7 @@ const GptMoviesSuggestions = () => {
   const { resultMoviedata, AIresultMoviedata } = useSelector(
     (store) => store.gpt
   );
-  console.log(resultMoviedata, AIresultMoviedata);
+ 
   if (!AIresultMoviedata) return null;
   return (
     <div className="bg-black bg-opacity-70 text-white">

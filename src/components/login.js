@@ -87,13 +87,13 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full max-h-screen  flex flex-col items-center">
+    <div >
       <Header />
-      <div className="absolute h-full w-full overflow-hidden">
-        <img alt="bg" className="h-full w-full object-cover" src={logo} />
+      <div className="absolute ">
+        <img alt="bg" className="h-screen w-screen object-cover" src={logo} />
       </div>
 
-      <div className="xl:h-[500px] absolute flex flex-col text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-[0.8] sm:px-8 sm:py-8 px-16 py-16 rounded-md">
+      <div className="w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
         <form onSubmit={(e) => e.preventDefault()} className="flex flex-col">
           <h1 className="m-2 font-bold text-3xl">
             {isloggedin ? "Sign In" : "Sign Up"}
