@@ -38,4 +38,4 @@ export const language_const = [
 ];
 
 //  export const OpenAI_Key = "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";
- export const OpenAI_Key = process.env.OpenAI_Key
+ export const OpenAI_Key = process.env.REACT_APP_OpenAI_Key
