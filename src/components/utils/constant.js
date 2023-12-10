@@ -9,7 +9,7 @@ export const API_OPTION = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZGMzZjgyZjYyZWRlZjg5NjgwNTZhMzNhZTE1NDJmYyIsInN1YiI6IjY1NmYwOWYxM2RjMzEzMDBjNGZiMjhlMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n0koO14RwERo4b1CMHZuim_DZ2V4jG7bO3H8-qPvBJ4",
+      "Bearer "+process.env.REACT_APP_IMBD_KEY,
   },
 };
 export const IMG_URL = "https://image.tmdb.org/t/p/w500";
@@ -36,3 +36,6 @@ export const language_const = [
     name: "Russian",
   },
 ];
+
+//  export const OpenAI_Key = "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";
+ export const OpenAI_Key = process.env.OpenAI_Key

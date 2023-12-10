@@ -65,7 +65,7 @@ const Header = () => {
             <>
               <select
                 onChange={handleLanguage}
-                className=" mt-1 outline-none bg-gray-900"
+                className=" rounded-lg mt-1 outline-none bg-gray-900"
               >
                 {language_const.map((lang) => (
                   <option key={lang.identifier}>{lang.name}</option>
@@ -80,7 +80,7 @@ const Header = () => {
             onClick={togglegpt}
             className=" bg-red-700 mx-4 px-2 rounded-xl py-2 my-1"
           >
-            GPTSearch
+            {isgpt ? "Homepage" : "GPTSearch"}
           </button>
           <img
             alt="signout"
